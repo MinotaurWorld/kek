@@ -1,0 +1,14 @@
+Sub Code()
+    Range("A1") = "Сумма: "
+    Range("A2") = "Сумма с уч. скидки: "
+    If Range("B1") > 1000 Then
+        Range("B2") = Range("B1") * 0.95
+        
+    Else
+        If Range("B1") > 500 Then
+            Range("B2") = Range("B1") * 0.97
+        Else
+            Range("B2") = Range("B1")
+        End If
+    End If
+End Sub
