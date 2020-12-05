@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+void main() {
+	setlocale(LC_ALL, "Russian");
+	int n, m;
+	cout << "Введите размер матрицы nxm (Сначала n, затем m): ";
+	cin >> n >> m;
+	int** mx = new int* [n];
+	for (int i = 0; i < n; i++) {
+		mx[i] = new int[m];
+	}
+	cout << "Заполните массив: \n";
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << i << "x" << j << ": ";
+			cin >> mx[i][j];
+		}
+	}
+	int nullstr, nullstlb;
+	cout << "Какую строку заменить нулями? (введите -1, если не заменять): ";
+	cin >> nullstr;
+	cout << "Какой столбец заменить нулями? (введите -1, если не заменять): ";
+	cin >> nullstlb;
+	if (nullstr != -1) {
+		for (int j = 0; j < m; j++) {
+			mx[nullstr][j] = 0;
+		}
+	}
+	if (nullstlb != -1) {
+		for (int i = 0; i < n; i++) {
+			mx[i][nullstlb] = 0;
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << mx[i][j] << " ";
+		}
+		cout << "\n";
+	}
+}
