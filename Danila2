@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+void main() {
+	int min = 2147483647, max = -2147483648, minid, maxid, length, k;
+	setlocale(LC_ALL, "Russian");
+	cout << "Введите размер массива: ";
+	cin >> length;
+	int* arr = new int[length];
+	for (int i = 0; i < length; i++) {
+		cout << i << ": ";
+		cin >> arr[i];
+	}  //Заполняем массив.
+	for (int i = length - 1; i > -1; i--) {
+		if (arr[i] <= min) {
+			min = arr[i];
+			minid = i;
+		}
+	}  //Находим первый наименьший элемент массива.
+	for (int i = 0; i < length; i++) {
+		if (arr[i] >= max) {
+			max = arr[i];
+			maxid = i;
+		}
+	}//Находим последний наибольший элемент массива.
+	cout << "Введите число k:";
+	cin >> k;
+	if (minid > maxid) {
+		for (int a = 1; a <= k; a++) {
+			int sav = arr[0];
+			for (int i = length - 1; i > -1; i--) {
+				int savv = arr[i];
+				arr[i] = sav;
+				sav = savv;
+			}
+		}
+	}
+	else {
+		for (int a = 1; a <= k; a++) {
+			int sav = arr[length - 1];
+			for (int i = 0; i < length; i++) {
+				int savv = arr[i];
+				arr[i] = sav;
+				sav = savv;
+			}
+		}
+	}  //Циклический сдвиг на k.
+	for (int i = 0; i < length; i++) {
+		cout << arr[i] << " ";
+	}  //Вывод.
+}
