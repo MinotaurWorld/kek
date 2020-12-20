@@ -1,0 +1,42 @@
+from random import randint
+
+def insrt(st, ins, index):
+    st = st + " "
+    sav = st[index]
+    for i in range(0, len(st) + 1):
+        if i < len(st):
+            savloc = st[i]
+        if i > index:
+            st = st[:i] + sav + st[i+1:]
+            sav = savloc
+    st = st[:index] + ins + st[index+1:]
+    for i in range(0, len(st)):
+        if st[i] == " ":
+            for i in range(i, len(st)):
+                if i == len(st) - 1:
+                    st = st[:i] + "" + st[i+1:]
+                else:
+                    st = st[:i] + st[i + 1] + st[i+1:]
+    return st;
+
+lenght = 0
+lenght = int(input("Введите длину серии: "))
+fstlenght = 0
+while 1:
+    rnd = randint(1, lenght - 1)
+    if rnd % 2 == 0:
+        fstlenght = rnd
+        break
+out = ""
+i = 0
+while i < fstlenght / 2:
+    out = out + "0"
+    i = i + 1
+outarr = " ".join(out)
+i = 0
+while i < fstlenght / 2:
+    out = insrt(out, "2", randint(0, len(out)))
+    i = i + 1
+while len(out) < lenght:
+    out = insrt(out, "1", randint(0, len(out)))
+print(out)
