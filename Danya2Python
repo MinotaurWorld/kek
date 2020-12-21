@@ -1,0 +1,53 @@
+min = 2147483647
+max = -2147483648
+minid = -1
+maxid = -1
+length = 0
+k = 0
+length = int(input("Введите размер массива: "))
+arr = [];
+i = 0
+while i < length: #Заполняем массив.
+    print(i, end = "")
+    arr.append(int(input(": ")))
+    i = i + 1
+i = 0
+i = length - 1
+while i > -1: #Находим первый наименьший элемент массива.
+    if arr[i] <= min:
+        min = arr[i]
+        minid = i
+    i = i - 1
+i = 0
+while i < length: #Находим последний наибольший элемент массива.
+    if (arr[i] >= max):
+        max = arr[i]
+        maxid = i
+    i = i + 1
+k = int(input("Введите число k: "))
+if minid > maxid: #Циклический сдвиг на k.
+    a = 1
+    while a <= k:
+        sav = arr[0]
+        i = length - 1
+        while i > -1:
+            savv = arr[i]
+            arr[i] = sav
+            sav = savv
+            i = i - 1
+        a = a + 1
+else:
+    a = 1
+    while a <= k:
+        sav = arr[length - 1]
+        i = 0
+        while i < length:
+            savv = arr[i];
+            arr[i] = sav
+            sav = savv
+            i = i + 1
+        a = a + 1
+i = 0
+while i < length: #Вывод.
+    print(arr[i], end = " ")
+    i = i + 1
