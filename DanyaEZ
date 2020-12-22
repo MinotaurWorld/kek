@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Введите время обеда в мс: ");
+        int T = sc.nextInt();
+        System.out.print("Введите время съедания гамбургера в мс: ");
+        int N = sc.nextInt();
+        System.out.print("Введите время съедания чизбургера в мс: ");
+        int M = sc.nextInt();
+        if(N < M){
+            System.out.println((T / N) + " Гамбургеров; 0 Чизбургеров");
+        }else{
+            System.out.println("0 Гамбургеров;" + (T / M) + " Чизбургеров");
+        }
+    }
+}
