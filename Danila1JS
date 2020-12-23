@@ -1,0 +1,62 @@
+<html>
+<script>
+function insrt(st, ins, index){
+	st = st + " ";
+	var arrst = st.split("");
+	var sav = arrst[index];
+	var i = 0;
+	while(i < st.length){
+		if(i > index){
+			var savloc = arrst[i];
+			arrst[i] = sav;
+			sav = savloc;
+		}
+		i = i + 1;
+	}
+	arrst[index] = ins;
+	var scst = "";
+	i = 0;
+	while(i < st.length){
+		scst = scst + arrst[i];
+		i = i + 1;
+	}
+	return scst;
+} //Функция добавляющая символ в строку по индексу.
+
+var length = prompt("Введите длину серии: ");
+var fstlength = 0;
+while (true) {
+	var rnd = Math.floor(Math.random() * ((length - 1) - 0 + 1) ) + 0;
+	if (rnd % 2 == 0) {
+		if (rnd > 0) {
+			fstlength = rnd;
+			break;
+		}
+	}
+}  //Тут мы генерируем количество нулей и двоек в серии. Оно должно быть четным и больше чем ноль.
+
+var out = "";  //Наша серия в виде строки.
+
+//Дальше начинаем ее заполнять.
+
+var i = 0;
+while(i < fstlength / 2){
+	out = out + "0";
+	i = i + 1;
+}//Первым делом нулями. Тут все просто.
+
+i = 0;
+while(i < fstlength / 2){
+	out = insrt(out, "2", Math.floor(Math.random() * (out.length - 0 + 1) ) + 0);
+	i = i + 1;
+}//Вторым делом двойками. Тут просто в рандомных местах подставляем двойки к нулям. Их количество равно количеству нулей.
+
+while (out.length < length) {
+	out = insrt(out, "1", Math.floor(Math.random() * (out.length - 0 + 1) ) + 0);
+}//Третьим делом дозаполняем оставшееся пространство единицами. Также как и в случае с двойками, просто подставляем их в рандомные места к, уже, двойкам и нулям.
+
+document.write('<br>');
+document.write('<br>');
+document.write(out);  //Вывод
+</script>
+</html>
